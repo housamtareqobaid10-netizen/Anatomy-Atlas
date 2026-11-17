@@ -2319,3 +2319,11 @@ export async function startAtlas(settings) {
     .catch(onModelError);
   requestAnimationFrame(tick);
 }
+// Disable Right Click & Inspect/Copy shortcuts to protect the platform
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J')) || (e.ctrlKey && e.key === 'u')) {
+    e.preventDefault();
+    alert("⚠️ هذا المحتوى محمي بواسطة حقوق النشر الخاصة بـ Dr. Helix.");
+  }
+});
