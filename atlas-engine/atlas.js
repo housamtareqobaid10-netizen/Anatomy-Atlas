@@ -2319,3 +2319,10 @@ export async function startAtlas(settings) {
     .catch(onModelError);
   requestAnimationFrame(tick);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const w = document.createElement("div");
+  w.style.cssText = "position:fixed;bottom:15px;right:15px;background:#0f172a;color:#fff;padding:6px 14px;border-radius:8px;font-size:13px;z-index:9999;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,0.3);pointer-events:none;";
+  w.innerHTML = "⚡ Created by Dr. Helix";
+  document.body.appendChild(w);
+});
