@@ -2320,9 +2320,16 @@ export async function startAtlas(settings) {
   requestAnimationFrame(tick);
 }
 
+// Custom Dr. Helix Profile Watermark Card
 document.addEventListener("DOMContentLoaded", () => {
-  const w = document.createElement("div");
-  w.style.cssText = "position:fixed;bottom:15px;right:15px;background:#0f172a;color:#fff;padding:6px 14px;border-radius:8px;font-size:13px;z-index:9999;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,0.3);pointer-events:none;";
-  w.innerHTML = "⚡ Created by Dr. Helix";
-  document.body.appendChild(w);
+  const card = document.createElement("div");
+  card.id = "helix-profile-card";
+  card.innerHTML = `
+    <img src="../atlas-engine/my-photo.jpg" alt="Dr. Helix" class="helix-avatar" />
+    <div class="helix-info">
+      <span class="helix-name">Dr. Helix</span>
+      <span class="helix-title">Medical & Anatomy Atlas</span>
+    </div>
+  `;
+  document.body.appendChild(card);
 });
