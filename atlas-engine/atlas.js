@@ -2331,5 +2331,40 @@ document.addEventListener("DOMContentLoaded", () => {
       <span class="helix-title">Medical & Anatomy Atlas</span>
     </div>
   `;
-  document.body.appendChild(card);
+  document.body.appendChild(card); 
+});
+// Profile Card & Interactive Full-Screen Avatar Injection
+const profileCardHTML = `
+<div id="helix-profile-card" style="position: fixed; bottom: 20px; left: 20px; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(56, 189, 248, 0.4); padding: 15px; border-radius: 14px; color: #fff; z-index: 9999; font-family: sans-serif; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; transition: all 0.3s ease;">
+  <img id="helix-avatar-img" src="my-photo.jpg" alt="Dr. Housam" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-bottom: 8px; border: 2px solid #38bdf8; cursor: pointer; transition: transform 0.2s;" title="اضغط لتكبير الصورة ومشاهدة الملف الشخصي" />
+  <div style="font-weight: bold; font-size: 15px; color: #38bdf8;">Dr. Housam Tareq ⭐</div>
+  <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">First Pavlov State Medical University</div>
+  <div style="font-size: 11px; color: #38bdf8; margin-top: 4px;">Custom Atlas & Engine Developer</div>
+</div>
+
+<!-- Modal لعرض الصورة كاملة والبطاقة عند الضغط -->
+<div id="helix-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 10000; justify-content: center; align-items: center; cursor: pointer;">
+  <div style="background: #0f172a; border: 2px solid #38bdf8; padding: 25px; border-radius: 20px; text-align: center; max-width: 350px; width: 90%; box-shadow: 0 20px 40px rgba(0,0,0,0.7); position: relative;" onclick="event.stopPropagation()">
+    <span id="helix-close-modal" style="position: absolute; top: 10px; right: 15px; font-size: 22px; color: #94a3b8; cursor: pointer; font-weight: bold;">&times;</span>
+    <img src="my-photo.jpg" alt="Dr. Housam Full" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #38bdf8; margin-bottom: 15px; box-shadow: 0 0 20px rgba(56,189,248,0.4);" />
+    <h3 style="color: #38bdf8; margin: 0 0 5px 0; font-size: 18px;">Dr. Housam Tareq</h3>
+    <p style="color: #cbd5e1; font-size: 13px; margin: 0 0 10px 0;">First Pavlov State Medical University</p>
+    <div style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; padding: 8px; border-radius: 8px; font-size: 12px; font-weight: bold;">Custom Atlas & Engine Developer</div>
+  </div>
+</div>
+`;
+
+document.body.insertAdjacentHTML('beforeend', profileCardHTML);
+
+// تفعيل تفاعل الضغط لتكبير الصورة
+document.addEventListener('DOMContentLoaded', () => {
+  const avatar = document.getElementById('helix-avatar-img');
+  const modal = document.getElementById('helix-modal');
+  const closeBtn = document.getElementById('helix-close-modal');
+
+  if(avatar && modal) {
+    avatar.onclick = () => { modal.style.display = 'flex'; };
+    closeBtn.onclick = () => { modal.style.display = 'none'; };
+    modal.onclick = () => { modal.style.display = 'none'; };
+  }
 });
