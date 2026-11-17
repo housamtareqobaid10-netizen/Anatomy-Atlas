@@ -136,15 +136,3 @@ export function hintSlots(name, level) {
 		return slot;
 	});
 }
-
-// A name as the answer line shows it, in English: every word with a capital, but for the small ones inside it
-// ("Head of the Femur"). Letters after a hyphen or a bracket count as words ("Six-Pack", "(Hand)").
-const SMALL = new Set(['a', 'an', 'and', 'at', 'by', 'for', 'in', 'of', 'on', 'or', 'the', 'to', 'with']);
-export function titleCase(name) {
-	let first = true;
-	return name.replace(/[\p{L}\p{N}][\p{L}\p{N}'’]*/gu, (word) => {
-		const small = !first && SMALL.has(word);
-		first = false;
-		return small ? word : word[0].toUpperCase() + word.slice(1);
-	});
-}
