@@ -2319,3 +2319,16 @@ export async function startAtlas(settings) {
     .catch(onModelError);
   requestAnimationFrame(tick);
 }
+// Custom Dr. Helix Profile Card - Professional
+document.addEventListener("DOMContentLoaded", () => {
+  const card = document.createElement("div");
+  card.id = "helix-profile-card";
+  card.innerHTML = `
+    <div class="helix-info">
+      <span class="helix-name">Dr. Helix <span class="helix-badge">⚡</span></span>
+      <span class="helix-title">First Pavlov State Medical Univ.</span>
+      <span class="helix-sub">Custom Atlas & Engine Developer</span>
+    </div>
+  `;
+  document.body.appendChild(card);
+});
